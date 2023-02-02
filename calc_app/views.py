@@ -48,9 +48,12 @@ def modulo_new(request):
                 descripcionModulo=moduloName,
                 numRA=ra,
                 numCE=ce,
-                curso_id=curso_id,
+                ciclo_id=curso_id,
                 )
+            info = Ciclo.objects.all()
+            info.update()
             return HttpResponseRedirect(reverse('index'))
+
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -76,6 +79,8 @@ def ciclo_new(request):
             # redirect to a new URL:
             info = Ciclo.objects.create(
                 descripcionCiclo=cicloName)
+            info = Ciclo.objects.all()
+            info.update()
             return HttpResponseRedirect(reverse('index'))
 
     # if a GET (or any other method) we'll create a blank form

@@ -18,7 +18,7 @@ class Ciclo(models.Model):
         return ciclo
 
     def __str__(self):
-        return '%s %s' % (self.id_ciclo, self.descripcionCiclo)
+        return '%s' % (self.descripcionCiclo)
 
 #Modelo del  Módulo
 class Modulo(models.Model):
@@ -31,6 +31,7 @@ class Modulo(models.Model):
     """
 
     ciclo = models.ForeignKey(Ciclo, on_delete=models.CASCADE)
+    # id_ciclo = models.CharField(max_length=10)
     id_modulo = models.AutoField(primary_key=True)
     siglasModulo = models.CharField(max_length=10,unique=True)
     descripcionModulo = models.CharField(max_length=264, unique=True)
@@ -38,7 +39,7 @@ class Modulo(models.Model):
     numCE = models.IntegerField()
 
     def __str__(self):
-        return '%s' % (self.ciclo)
+        return '%s %s %s' % (self.ciclo, self.id_modulo, self.siglasModulo)
 
 #Modelo del  Actividades
 class Actividades(models.Model):
