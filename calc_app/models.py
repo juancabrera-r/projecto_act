@@ -29,6 +29,7 @@ class Modulo(models.Model):
     id_modulo -> identificación del módulo, se genera automático, único
     descripcionModulo -> Nombre del módulo de ciclo, único
     """
+
     ciclo = models.ForeignKey(Ciclo, on_delete=models.CASCADE)
     id_modulo = models.AutoField(primary_key=True)
     siglasModulo = models.CharField(max_length=10,unique=True)
@@ -37,7 +38,7 @@ class Modulo(models.Model):
     numCE = models.IntegerField()
 
     def __str__(self):
-        return '%s, %s' % (self.siglasModulo, self.descripcionModulo)
+        return '%s' % (self.ciclo)
 
 #Modelo del  Actividades
 class Actividades(models.Model):
@@ -47,10 +48,8 @@ class Actividades(models.Model):
     id_modulo -> identificación del módulo, se genera automático, único
     descripcionModulo -> Nombre del módulo de ciclo, único
     """
-    ciclo = models.ForeignKey(Ciclo, on_delete=models.CASCADE)
     numAct = models.IntegerField()
-    numRA = models.ForeignKey(Modulo, on_delete=models.CASCADE)
-    numCE = models.ForeignKey(Modulo, on_delete=models.CASCADE)
+    modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE)
     pesoCE1 = models.IntegerField()
     pesoCE2 = models.IntegerField()
     pesoCE3 = models.IntegerField()
@@ -63,4 +62,4 @@ class Actividades(models.Model):
     pesoCE10 = models.IntegerField()
 
     def __str__(self):
-        return self.numAct
+        return str(self.modulo)
