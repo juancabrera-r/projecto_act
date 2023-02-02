@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+    {% block body_block %}
+
+    <h1>CREAR CURSO</h1>
+<!--    Formulario creado en forms.py que crea un nuevo módulo-->
+        <form action="{% url 'calc_app:modulo_new' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+        <input type="submit" name="" value="Continuar">
+    </form>
+
+
+    {% endblock %}

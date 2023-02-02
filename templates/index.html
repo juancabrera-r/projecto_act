@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+    {% block body_block %}
+
+    <h1>Welcome to index</h1>
+
+<!--    <form action="" method="post">-->
+<!--        {% csrf_token %}-->
+<!--        <table>-->
+<!--            <tr>-->
+<!--                <th>Introduzca los Resultados de aprendizaje (RA): </th>-->
+<!--               <td><input type="number" id="cols" name="resultadosAprendizaje" placeholder="RA"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th> Introduzca los Criterios de Evaluación (CE): </th>-->
+<!--             <td><input type="number" name="criteriosEvaluación" placeholder="CE"></td>-->
+
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th>Introduzca el número de actividades: </th>-->
+<!--                 <td><input type="number" id="rows" name="numActividades" placeholder="Actividades"></td>-->
+<!--            </tr>-->
+<!--        </table>-->
+
+<!--        <input type="submit" name="" value="Continuar">-->
+<!--        <input type="button" id="enviar" value="crear tabla" onclick="crear()"/>- -->
+<!--        <input type="button" value="Limpiar" onclick="limpiar()"/>-->
+<!--        <input type="button" value="Datos" onclick="obtener()"/>-->
+<!--    </form>-->
+
+    <input type="button" value="Genera una tabla" onclick="genera_tabla()">
+
+
+    <script>
+    function crear(){
+        var col = document.getElementById("cols").value;
+        var filas = document.getElementById("rows").value;
+        var tabla="<table border=\"0\">";
+
+        tabla+="<tr><td></td>";
+        for(j=0;j<col;j++){
+            tabla+="<td>"+"RA"+(j+1)+ "</td>";
+        }
+        tabla+="</tr>";
+
+        for(i=0;i<filas;i++){
+            tabla+="<tr>";
+            tabla+="<td>"+"Act."+(i+1)+ "</td>";
+            for(j=0;j<col;j++){
+                tabla+="<td>"+"<input type=\"text\" size=\"1\">"+ "</td>";
+            }
+            tabla+="</tr>";
+        }
+        tabla+="</table>";
+        document.getElementById("resultado").innerHTML=tabla;
+    }
+
+    function limpiar() {
+        document.getElementById("resultado").innerHTML="";
+    }
+
+    function obtener() {
+        let obtenerDato = document.getElementsByTagName("td");
+        console.log(obtenerDato);
+    }
+    </script>
+
+
+    <div id="resultado"></div>
+
+    {% endblock %}
