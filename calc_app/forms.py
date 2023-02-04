@@ -1,6 +1,6 @@
 from django.core import validators
 from django import forms
-from .models import Ciclo
+from .models import Ciclo, Modulo
 
 import logging
 logger = logging.getLogger(__name__)
@@ -25,20 +25,28 @@ class ModuloForm(forms.Form):
 		numCE -> nº de Criterios de Evaluación
 	"""
 	#Accede a la base de datos, obtiene todos los vamores y crea una lista de tuplas (id,curso)
-	cursos_list = Ciclo.objects.all()
-	CURSOS_CHOICES = []
 
-	for curso in cursos_list:
-		logger.warning(curso)
-		CURSOS_CHOICES.append((curso.id_ciclo,curso.descripcionCiclo))
 
-	logger.warning(CURSOS_CHOICES)
+	# ciclos = Ciclo.objects.all()
+	# logger.warning(ciclos)
+	# # ciclos_update = ciclos.refresh_from_db()
+	# # logger.warning(ciclos_update)
+	# # cursos_list = Ciclo.objects.all()
+	# CURSOS_CHOICES = []
+	#
+	# for curso in ciclos:
+	# 	CURSOS_CHOICES.append((curso.id_ciclo,curso.descripcionCiclo))
+
 	moduloName = forms.CharField(label="Nombre del módulo", max_length=200)
 	siglasModulo = forms.CharField(label="Siglas del módulo", max_length=10)
 	numRA = forms.IntegerField(label="Números de RA")
 	numCE = forms.IntegerField(label="Números de CE")
-	curso_id = forms.CharField(label='Selecciona el cíclo', widget=forms.Select(choices=CURSOS_CHOICES))
+	domain = forms.TypedChoiceField(choices=[])
+	# curso_id = forms.CharField(label='Selecciona el cíclo', widget=forms.Select(choices=CURSOS_CHOICES))
 
+	def __init__(self, *args, **kwargs):
+		super(ModuloForm, self).__init__(*args, **kwargs)
+		self.fields['domain'].choices = [(choice.id_ciclo, choice.descripcionCiclo,) for choice in Ciclo.objects.all()]
 
 class CicloForm(forms.Form):
 	cicloName = forms.CharField(label="Nombre del ciclo", max_length=200)

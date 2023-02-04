@@ -29,9 +29,7 @@ class Modulo(models.Model):
     id_modulo -> identificación del módulo, se genera automático, único
     descripcionModulo -> Nombre del módulo de ciclo, único
     """
-
     ciclo = models.ForeignKey(Ciclo, on_delete=models.CASCADE)
-    # id_ciclo = models.CharField(max_length=10)
     id_modulo = models.AutoField(primary_key=True)
     siglasModulo = models.CharField(max_length=10,unique=True)
     descripcionModulo = models.CharField(max_length=264, unique=True)

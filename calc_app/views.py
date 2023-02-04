@@ -28,7 +28,8 @@ def modulo_view(request):
 #Creaciónde un nuevo MÓDULO desde modulo.html
 def modulo_new(request):
     # if this is a POST request we need to process the form data
-    logger.warning("dentro")
+
+
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ModuloForm(request.POST)
@@ -39,7 +40,7 @@ def modulo_new(request):
             ra = request.POST['numRA']
             ce = request.POST['numCE']
             curso_id = int(request.POST['curso_id'])
-            logger.warning(Ciclo.objects.get(pk=curso_id))
+            # logger.warning(Ciclo.objects.get(pk=curso_id))
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
@@ -50,8 +51,6 @@ def modulo_new(request):
                 numCE=ce,
                 ciclo_id=curso_id,
                 )
-            info = Ciclo.objects.all()
-            info.update()
             return HttpResponseRedirect(reverse('index'))
 
 
@@ -63,7 +62,7 @@ def modulo_new(request):
 
 #Creaciónde un nuevo CICLO desde modulo.html
 def ciclo_new(request):
-    logger.warning("dentro")
+
 
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -79,8 +78,7 @@ def ciclo_new(request):
             # redirect to a new URL:
             info = Ciclo.objects.create(
                 descripcionCiclo=cicloName)
-            info = Ciclo.objects.all()
-            info.update()
+
             return HttpResponseRedirect(reverse('index'))
 
     # if a GET (or any other method) we'll create a blank form
