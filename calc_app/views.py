@@ -11,24 +11,26 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 
+#Vista de la página Index
 def index(request):
     return render(request, 'index.html')
 
+#Vista de la página donde se muestra el formulario para crear un ciclo
 def ciclo_view(request):
     form = CicloForm()
     return render(request, 'ciclo.html', {'form': form})
+#
+# def relative(request):
+#     return render(request, 'relative_url_template.html')
 
-def relative(request):
-    return render(request, 'relative_url_template.html')
-
+#Vista de la página donde se muestra el formulario para crear un módulo
 def modulo_view(request):
     form = ModuloForm()
     return render(request, 'modulo.html', {'form':form})
 
-#Creaciónde un nuevo MÓDULO desde modulo.html
+#Formulario para crear un nuevo módulo
 def modulo_new(request):
     # if this is a POST request we need to process the form data
-
 
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -40,10 +42,7 @@ def modulo_new(request):
             ra = request.POST['numRA']
             ce = request.POST['numCE']
             curso_id = int(request.POST['curso_id'])
-            # logger.warning(Ciclo.objects.get(pk=curso_id))
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
+
             info = Modulo.objects.create(
                 siglasModulo=sigla,
                 descripcionModulo=moduloName,
@@ -60,10 +59,8 @@ def modulo_new(request):
 
     return render(request, 'admin.html', {'form': form})
 
-#Creaciónde un nuevo CICLO desde modulo.html
+#Creaciónde un nuevo CICLO
 def ciclo_new(request):
-
-
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
 

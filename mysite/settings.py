@@ -29,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
+# Código que permite mostrar por pantalla para realizar debbug
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

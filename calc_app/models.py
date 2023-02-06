@@ -12,10 +12,10 @@ class Ciclo(models.Model):
     id_ciclo = models.AutoField(primary_key=True)
     descripcionCiclo = models.CharField(max_length=264, unique=True)
 
-    @classmethod
-    def crear_ciclo(cls, descripcionCiclo):
-        ciclo = cls(descripcionCiclo=descripcionCiclo)
-        return ciclo
+    # @classmethod
+    # def crear_ciclo(cls, descripcionCiclo):
+    #     ciclo = cls(descripcionCiclo=descripcionCiclo)
+    #     return ciclo
 
     def __str__(self):
         return '%s' % (self.descripcionCiclo)
