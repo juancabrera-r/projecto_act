@@ -28,6 +28,9 @@ def modulo_view(request):
     form = ModuloForm()
     return render(request, 'modulo.html', {'form':form})
 
+def act_view(request):
+    return render(request, 'actividad.html')
+
 #Formulario para crear un nuevo módulo
 def modulo_new(request):
     # if this is a POST request we need to process the form data
