@@ -44,11 +44,13 @@ class CicloForm(forms.Form):
 	"""
 	cicloName = forms.CharField(label="Nombre del ciclo", max_length=200)
 
-# class Post(forms.Form):
-# 	# resultadosAprendizaje = forms.CharField(label='resultadosAprendizaje', max_length=20)
-#
-# 	class Meta():
-# 		model = UserInfo
-# 		fields = ('resultadosAprendizaje',)
+
+
+class ActForm(forms.Form):
+	"""
+
+	"""
+
+
 
 
