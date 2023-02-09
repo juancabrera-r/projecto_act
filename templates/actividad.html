@@ -3,6 +3,15 @@
 
     <h1>CREAR ACTIVIDAD</h1>
 
+<!--    Formulario creado en forms.py que crea un nuevo módulo-->
+        <form action="{% url 'calc_app:act_new' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+        <input type="submit" name="" value="Continuar">
+        </form>
+
+
 {% with 'a b c' as len_ra_1 %}
 {% with 'a b c d' as len_ra_2 %}
 {% with 'a b' as len_ra_3 %}

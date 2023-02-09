@@ -9,7 +9,7 @@ class Ciclo(models.Model):
     id_curso -> identificación del curso, se genera automático
     descripcionCurso -> Nombre del curso (ciclo), único
     """
-    id_ciclo = models.AutoField(primary_key=True)
+    id_ciclo = models.AutoField(primary_key=True, unique=True)
     descripcionCiclo = models.CharField(max_length=264, unique=True)
 
     # @classmethod
@@ -30,7 +30,7 @@ class Modulo(models.Model):
     descripcionModulo -> Nombre del módulo de ciclo, único
     """
     ciclo = models.ForeignKey(Ciclo, on_delete=models.CASCADE)
-    id_modulo = models.AutoField(primary_key=True)
+    id_modulo = models.AutoField(primary_key=True, unique=True)
     siglasModulo = models.CharField(max_length=10,unique=True)
     descripcionModulo = models.CharField(max_length=264, unique=True)
     numRA = models.IntegerField()
@@ -47,18 +47,30 @@ class Actividades(models.Model):
     id_modulo -> identificación del módulo, se genera automático, único
     descripcionModulo -> Nombre del módulo de ciclo, único
     """
+    id_act = models.AutoField(primary_key=True, unique=True)
     numAct = models.IntegerField()
+    ciclo = models.ForeignKey(Ciclo, on_delete=models.CASCADE)
     modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE)
-    pesoCE1 = models.IntegerField()
-    pesoCE2 = models.IntegerField()
-    pesoCE3 = models.IntegerField()
-    pesoCE4 = models.IntegerField()
-    pesoCE5 = models.IntegerField()
-    pesoCE6 = models.IntegerField()
-    pesoCE7 = models.IntegerField()
-    pesoCE8 = models.IntegerField()
-    pesoCE9 = models.IntegerField()
-    pesoCE10 = models.IntegerField()
+    n_RA_1 = models.IntegerField(default=0)
+    n_CE_1 = models.IntegerField(default=0)
+    n_RA_2 = models.IntegerField(default=0)
+    n_CE_2 = models.IntegerField(default=0)
+    n_RA_3 = models.IntegerField(default=0)
+    n_CE_3 = models.IntegerField(default=0)
+    n_RA_4 = models.IntegerField(default=0)
+    n_CE_4 = models.IntegerField(default=0)
+    n_RA_5 = models.IntegerField(default=0)
+    n_CE_5 = models.IntegerField(default=0)
+    n_RA_6 = models.IntegerField(default=0)
+    n_CE_6 = models.IntegerField(default=0)
+    n_RA_7 = models.IntegerField(default=0)
+    n_CE_7 = models.IntegerField(default=0)
+    n_RA_8 = models.IntegerField(default=0)
+    n_CE_8 = models.IntegerField(default=0)
+    n_RA_9 = models.IntegerField(default=0)
+    n_CE_9 = models.IntegerField(default=0)
+    n_RA_10 = models.IntegerField(default=0)
+    n_CE_10 = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.modulo)

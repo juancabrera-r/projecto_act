@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .forms import ModuloForm, CicloForm
+from .forms import ModuloForm, CicloForm, ActForm
 from .models import Ciclo, Modulo
 from django.shortcuts import get_list_or_404
 
@@ -26,7 +26,8 @@ def modulo_view(request):
     return render(request, 'modulo.html', {'form':form})
 
 def act_view(request):
-    return render(request, 'actividad.html')
+    form = ActForm()
+    return render(request, 'actividad.html', {'form':form})
 
 #Formulario para crear un nuevo módulo
 def modulo_new(request):
@@ -84,13 +85,28 @@ def ciclo_new(request):
 
     return render(request, 'ciclo.html', {'form': form})
 
-#tables-2 tutorial
-# from django_tables2 import SingleTableView, LazyPaginator
-# from .models import Person
-# from .tables import PersonTable
-#
-# class PersonListView(SingleTableView):
-#     model = Person
-#     table_class = PersonTable
-#     paginator_class = LazyPaginator
-#     template_name = 'actividad.html'
+
+#Creaciónde un nuevo CICLO
+def act_new(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+
+        # create a form instance and populate it with data from the request:
+        form = ActForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # cicloName = request.POST['cicloName']
+
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            # info = Ciclo.objects.create(
+            #     descripcionCiclo=cicloName)
+
+            return HttpResponseRedirect(reverse('index'))
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = CicloForm()
+
+    return render(request, 'actividad.html', {'form': form})

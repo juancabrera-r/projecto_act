@@ -15,6 +15,13 @@ def clean_botcatcher(self):
 	return botcatcher
 
 #
+class CicloForm(forms.Form):
+	"""
+	Formulario para crear un nuevo ciclo
+	cicloName -> nombre del ciclo
+	"""
+	cicloName = forms.CharField(label="Nombre del ciclo", max_length=200)
+
 class ModuloForm(forms.Form):
 	"""
 	Formulario para crear un nuevo módulo
@@ -35,23 +42,20 @@ class ModuloForm(forms.Form):
 	#Inicializa la lista desplegable
 	def __init__(self, *args, **kwargs):
 		super(ModuloForm, self).__init__(*args, **kwargs)
-		self.fields['domain'].choices = [(choice.id_ciclo, choice.descripcionCiclo,) for choice in Ciclo.objects.all()]
-
-class CicloForm(forms.Form):
-	"""
-	Formulario para crear un nuevo ciclo
-	cicloName -> nombre del ciclo
-	"""
-	cicloName = forms.CharField(label="Nombre del ciclo", max_length=200)
-
+		self.fields['choice'].choices = [(choice.id_ciclo, choice.descripcionCiclo,) for choice in Ciclo.objects.all()]
 
 
 class ActForm(forms.Form):
 	"""
 
 	"""
-
-
+	choice = forms.TypedChoiceField(choices=[])
+# 	# choice_Modulo = forms.TypedChoiceField(choices=[])
+#
+	#Inicializa la lista desplegable
+	def __init__(self, *args, **kwargs):
+		super(ActForm, self).__init__(*args, **kwargs)
+		self.fields['choice'].choices = [(choice.id_ciclo, choice.descripcionCiclo,) for choice in Ciclo.objects.all()]
 
 
 
