@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+# from .views import PersonListView
 # Template tagging
 app_name = 'calc_app'
 
@@ -12,4 +13,5 @@ urlpatterns = [
     path('actividad/', views.act_view, name='actividad'),
     path('ciclo_new/', views.ciclo_new, name='ciclo_new'),
     path('modulo_new/', views.modulo_new, name='modulo_new'),
+    # path("people/", PersonListView.as_view(), name='actividad'),
 ]

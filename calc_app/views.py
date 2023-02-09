@@ -19,9 +19,6 @@ def index(request):
 def ciclo_view(request):
     form = CicloForm()
     return render(request, 'ciclo.html', {'form': form})
-#
-# def relative(request):
-#     return render(request, 'relative_url_template.html')
 
 #Vista de la página donde se muestra el formulario para crear un módulo
 def modulo_view(request):
@@ -86,3 +83,14 @@ def ciclo_new(request):
         form = CicloForm()
 
     return render(request, 'ciclo.html', {'form': form})
+
+#tables-2 tutorial
+# from django_tables2 import SingleTableView, LazyPaginator
+# from .models import Person
+# from .tables import PersonTable
+#
+# class PersonListView(SingleTableView):
+#     model = Person
+#     table_class = PersonTable
+#     paginator_class = LazyPaginator
+#     template_name = 'actividad.html'

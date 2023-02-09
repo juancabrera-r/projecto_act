@@ -62,3 +62,4 @@ class Actividades(models.Model):
 
     def __str__(self):
         return str(self.modulo)
+

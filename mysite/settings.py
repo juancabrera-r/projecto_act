@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'calc_app',
+    'django_tables2',
 ]
 
 MIDDLEWARE = [
