@@ -32,30 +32,27 @@ class ModuloForm(forms.Form):
 		numCE -> nº de Criterios de Evaluación
 	"""
 	#Accede a la base de datos, obtiene todos los vamores y crea una lista de tuplas (id,curso)
-
 	moduloName = forms.CharField(label="Nombre del módulo", max_length=200)
 	siglasModulo = forms.CharField(label="Siglas del módulo", max_length=10)
 	numRA = forms.IntegerField(label="Números de RA")
-	numCE = forms.IntegerField(label="Números de CE")
-	choice = forms.TypedChoiceField(choices=[])
+	# numCE = forms.IntegerField(label="Números de CE")
+	idCiclo = forms.TypedChoiceField(choices=[])
 
 	#Inicializa la lista desplegable
 	def __init__(self, *args, **kwargs):
 		super(ModuloForm, self).__init__(*args, **kwargs)
-		self.fields['choice'].choices = [(choice.id_ciclo, choice.descripcionCiclo,) for choice in Ciclo.objects.all()]
+		self.fields['idCiclo'].choices = [(choice.id_ciclo, choice.descripcionCiclo,) for choice in Ciclo.objects.all()]
 
 
 class ActForm(forms.Form):
 	"""
 
 	"""
-	choice = forms.TypedChoiceField(choices=[])
-# 	# choice_Modulo = forms.TypedChoiceField(choices=[])
-#
-	#Inicializa la lista desplegable
-	def __init__(self, *args, **kwargs):
-		super(ActForm, self).__init__(*args, **kwargs)
-		self.fields['choice'].choices = [(choice.id_ciclo, choice.descripcionCiclo,) for choice in Ciclo.objects.all()]
-
-
-
+	numActividades = forms.IntegerField(widget=forms.TextInput(
+		attrs={'class':'form-control'}),
+		label="",
+		error_messages={
+			'invalid':"Debe introducir un número",
+			'required': "Este campo es necesario",
+		}
+	)

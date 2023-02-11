@@ -34,7 +34,7 @@ class Modulo(models.Model):
     siglasModulo = models.CharField(max_length=10,unique=True)
     descripcionModulo = models.CharField(max_length=264, unique=True)
     numRA = models.IntegerField()
-    numCE = models.IntegerField()
+
 
     def __str__(self):
         return '%s %s %s' % (self.ciclo, self.id_modulo, self.siglasModulo)

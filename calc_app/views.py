@@ -27,7 +27,9 @@ def modulo_view(request):
 
 def act_view(request):
     form = ActForm()
-    return render(request, 'actividad.html', {'form':form})
+    ciclos = Ciclo.objects.all()
+    modulos = Modulo.objects.all()
+    return render(request, 'actividad.html', {'form':form, 'ciclos':ciclos, 'modulos':modulos})
 
 #Formulario para crear un nuevo módulo
 def modulo_new(request):
@@ -38,18 +40,20 @@ def modulo_new(request):
         form = ModuloForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
+
             moduloName = request.POST['moduloName']
             sigla = request.POST['siglasModulo']
             ra = request.POST['numRA']
-            ce = request.POST['numCE']
-            curso_id = int(request.POST['curso_id'])
-
+            # ce = request.POST['numCE']
+            id_Ciclo = int(request.POST['idCiclo'])
+            # VER PARA CAMBIAR USANDO CLEANED_DATA
+            # temp = form.cleaned_data.get('moduloName')
+            # print(temp)
             info = Modulo.objects.create(
                 siglasModulo=sigla,
                 descripcionModulo=moduloName,
                 numRA=ra,
-                numCE=ce,
-                ciclo_id=curso_id,
+                ciclo_id=id_Ciclo,
                 )
             return HttpResponseRedirect(reverse('index'))
 
