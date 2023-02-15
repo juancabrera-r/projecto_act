@@ -7,8 +7,66 @@
             {% csrf_token %}
             {{ form.as_p }}
 
-        <input type="submit" name="" value="Continuar">
+            <input type="hidden" name="id_RACE" id='result' value='result'>
+
+            <div id="resultado"></div>
+
+        <input type="submit" name="" value="Continuar" onclick="obtener()">
+        <input type="button" value="Genera una tabla" onclick="crear()">
     </form>
 
+
+<!--        <input type="submit" name="" value="Continuar">-->
+<!--        <input type="button" id="enviar" value="crear tabla" onclick="crear()"/>- -->
+<!--        <input type="button" value="Limpiar" onclick="limpiar()"/>-->
+<!--        <input type="button" value="Datos" onclick="obtener()"/>-->
+
+
+    <script>
+    function crear(){
+        var col = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o'];
+        var filas = document.getElementById("id_numRA").value;
+        var tabla="<table class=\"table table-striped\" border=\"0\">";
+
+        tabla+="<tr><td></td>";
+        for(j=0;j<col.length;j++){
+            tabla+="<td>"+"CE_"+(col[j])+ "</td>";
+        }
+        tabla+="</tr>";
+
+        for(i=0;i<filas;i++){
+            tabla+="<tr>";
+            tabla+="<td>"+"RA"+(i+1)+ "</td>";
+            for(j=0;j<col.length;j++){
+                tabla+="<td>"+"<input type=\"checkbox\" size=\"1\" id=" +[i+1]+[j+1]+ ">"+ "</td>";
+            }
+            tabla+="</tr>";
+        }
+        tabla+="</table>";
+        document.getElementById("resultado").innerHTML=tabla;
+    }
+
+    function obtener() {
+        var col = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o'];
+        var filas = document.getElementById("id_numRA").value;
+        var ce_checked = [];
+        var ID = [];
+            $("*").each(function() {
+                if (this.id) {
+                    ID.push(this.id);
+                }
+            });
+        for(i=1;i<=filas;i++){
+            for(j=1;j<=col.length;j++){
+                var temp = ([i]+[j]);
+                if(document.getElementById(temp).checked){
+                    ce_checked.push([temp]);
+                }
+            }
+        }
+        console.log(ce_checked)
+        document.getElementById("result").value = ce_checked;
+    }
+    </script>
 
     {% endblock %}

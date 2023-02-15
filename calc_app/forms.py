@@ -1,5 +1,7 @@
 from django.core import validators
 from django import forms
+from django.forms import HiddenInput
+
 from .models import Ciclo, Modulo
 
 import logging
@@ -35,7 +37,7 @@ class ModuloForm(forms.Form):
 	moduloName = forms.CharField(label="Nombre del módulo", max_length=200)
 	siglasModulo = forms.CharField(label="Siglas del módulo", max_length=10)
 	numRA = forms.IntegerField(label="Números de RA")
-	# numCE = forms.IntegerField(label="Números de CE")
+	numRACE = forms.CharField(widget=HiddenInput(), required=False)
 	idCiclo = forms.TypedChoiceField(choices=[])
 
 	#Inicializa la lista desplegable

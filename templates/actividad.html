@@ -32,10 +32,10 @@
 
                     <div class="row">
                         <div class="col-md-4">
-                            <select name="modulos" id="Modulos" class="form-control">
-                                <option value="0">--Módulo--</option>
+                            <select name="modulos" id="Modulos" class="form-control" >
+                                <option value="0" id="0">--Módulo--</option>
                                 {% for modulo in modulos  %}
-                                <option value="{{ modulo.ciclo_id }}">{{ modulo.descripcionModulo }}</option>
+                                <option value="{{ modulo.id_modulo}}" id="{{modulo.ciclo_id}}">{{ modulo.descripcionModulo }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -46,6 +46,7 @@
                             {{ form.as_p }}
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -55,83 +56,20 @@
         </form>
 
 
-{% with 'a b c d' as len_ra_1 %}
-{% with 'a b c d' as len_ra_2 %}
-{% with 'a b' as len_ra_3 %}
-
-{% with '1 2 3 4 5 6 7 8 9 10' as n_act %}
-{% with 'a b c d e f g h i j k' as n_ce %}
-{% with '1 2 3 4 ' as n_ra %}
-{% for act in n_act.split %}
-<table class="table table-striped table-fixed">
-  <thead data-toggle="collapse" href="#collapseA{{act}}" aria-expanded="false" aria-controls="collapseA{{act}}">
-    <tr>
-
-        <th scope="row">Actividad {{act}}</th>
-        {% for i in n_ra.split %}
-            <th class="th-lg" style="text-align: center">RA{{i}}</th>
-
-        {% endfor %}
-    </tr>
-  </thead>
-  <tbody class="collapse" id="collapseA{{act}}">
-
-    {% for ce in len_ra_2.split %}
-    <tr>
-      <th scope="row">{{act}}</th>
-            {% if ce in len_ra_1 or len_ra_2 or len_ra_3 %}
-                {% if ce in len_ra_1 %}
-                    {{ra}}
-                    <td style="text-align: right"><div class="col-6"><input id="ACT{{act}}.RA1.CE{{ce}}" type="checkbox" placeholder="Company name"> CE{{ce}} </div></td>
-                {% else %}
-                    <th></th>
-                {% endif %}
-                {% if ce in len_ra_2 %}
-                    <td style="text-align: right"><div class="col-6"><input id="ACT{{act}}.RA2.CE{{ce}}" type="checkbox" placeholder="Company name"> CE{{ce}} </div></td>
-                {% else %}
-                    <th></th>
-                {% endif %}
-                {% if ce in len_ra_3 %}
-                    <td style="text-align: right"><div class="col-6"><input id="ACT{{act}}.RA3.CE{{ce}}" type="checkbox" placeholder="Company name"> CE{{ce}} </div></td>
-                {% else %}
-                    <th></th>
-                {% endif %}
-                {% if ce in len_ra_4 %}
-                    <td style="text-align: right"><div class="col-6"><input id="ACT{{act}}.RA4.CE{{ce}}" type="checkbox" placeholder="Company name"> CE{{ce}} </div></td>
-                {% else %}
-                    <th></th>
-                {% endif %}
-            {% else %}
-
-            {% endif %}
-    </tr>
-    {% endfor %}
-
-  </tbody>
-</table>
-{% endfor %}
-{% endwith %}
-{% endwith %}
-{% endwith %}
-{% endwith %}
-{% endwith %}
-{% endwith %}
-
-
-
-
 
 
 <script>
 
 $(document).ready(function(){
+    var ciclos = $("#ciclos");
+    var Modulos = $("#Modulos");
 
- var ciclos = $("#ciclos");
- var Modulos = $("#Modulos");
- var $options = Modulos.find('option');
- ciclos.on('change',function(){
-    Modulos.html($options.filter('[value="'+ this.value  +'"]'));
- }).trigger('change');
+    var $options = Modulos.find('option');
+    console.log(Modulos.html($options.filter('[value="'+ this.value  +'"]')));
+    console.log(this.value)
+    ciclos.on('change',function(){
+    Modulos.html($options.filter('[id="'+ this.value  +'"]'));
+    }).trigger('change');
 
 });
 </script>
