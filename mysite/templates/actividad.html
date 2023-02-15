@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+    {% block body_block %}
+
+    <h1>CREAR ACTIVIDAD</h1>
+    {% if user.is_authenticated %}
+<!--    Formulario creado en forms.py que crea un nuevo módulo-->
+        <form action="{% url 'calc_app:act_new' %}" method="post">
+            {% csrf_token %}
+            <div class="container">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a>Selecciona un ciclo:</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select name="ciclos" id="ciclos" class="form-control">
+                                <option value="0">--Ciclo--</option>
+                                {% for ciclo in ciclos  %}
+                                <option value="{{ ciclo.id_ciclo }}">{{ ciclo.descripcionCiclo }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a>Selecciona un ciclo:</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select name="modulos" id="Modulos" class="form-control" >
+                                <option value="0" id="0">--Módulo--</option>
+                                {% for modulo in modulos  %}
+                                <option value="{{ modulo.id_modulo}}" id="{{modulo.ciclo_id}}">{{ modulo.descripcionModulo }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a>Número de actividades: </a>
+                            {{ form.as_p }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        <input type="submit" name="" value="Continuar">
+        </form>
+
+    {% else %}
+
+    <p>Debe registrarse para poder crear una actividad</p>
+
+    {% endif %}
+
+
+
+<script>
+
+$(document).ready(function(){
+    var ciclos = $("#ciclos");
+    var Modulos = $("#Modulos");
+
+    var $options = Modulos.find('option');
+    console.log(Modulos.html($options.filter('[value="'+ this.value  +'"]')));
+    console.log(this.value)
+    ciclos.on('change',function(){
+    Modulos.html($options.filter('[id="'+ this.value  +'"]'));
+    }).trigger('change');
+
+});
+</script>
+
+
+
+    {% endblock %}
+
+

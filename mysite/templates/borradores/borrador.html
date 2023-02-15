@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+    {% block body_block %}
+
+    <h1>CREAR ACTIVIDAD</h1>
+<!--    Formulario creado en forms.py que crea un nuevo módulo-->
+<!--        <form action="{% url 'calc_app:ciclo_new' %}" method="post">-->
+<!--            {% csrf_token %}-->
+<!--            {{ form.as_p }}-->
+
+<!--        <input type="submit" name="" value="Continuar">-->
+<!--    </form>-->
+{% with '1 2 3' as list %}
+{% endwith %}
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Actividad</th>
+        <th scope="col">RA1</th>
+        <th scope="col">RA2</th>
+        <th scope="col">RA3</th>
+      </tr>
+    </thead>
+      <tbody>
+      {% for i in list.split %}
+      {% endfor %}
+
+          <tr>
+            <td><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2 #multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample2 multiCollapseExample1">1</button></td>
+          </tr>
+          <tr class="hide-table-padding">
+            <td></td>
+            <td colspan="1">
+              <div class="collapse in p-3" id="multiCollapseExample1" >
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE1 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE2 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE3 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE4 </div>
+                </div>
+              </div></td>
+            <td colspan="1">
+              <div id="multiCollapseExample2" class="multi-collapse collapse in p-3">
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE1 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE2 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE3 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE4 </div>
+                </div>
+              </div></td>
+              <td colspan="1">
+              <div id="collapse1_c" class="multi-collapse collapse in p-3">
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE1 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE2 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE3 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE4 </div>
+                </div>
+              </div></td>
+          </tr>
+
+          <tr>
+            <td><button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="collapse2_a collapse2_b collapse2_c">2</button></td>
+          </tr>
+          <tr class="hide-table-padding">
+            <td></td>
+            <td colspan="1">
+              <div class="collapse multi-collapse  in p-3" id="collapse2_a" >
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE1 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE2 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE3 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE4 </div>
+                </div>
+              </div></td>
+            <td colspan="1">
+              <div id="collapse2_b" class="multi-collapse collapse in p-3">
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE1 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE2 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE3 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE4 </div>
+                </div>
+              </div></td>
+              <td colspan="1">
+              <div id="collapse2_c" class="multi-collapse collapse in p-3">
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE1 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE2 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE3 </div>
+                </div>
+                <div class="row">
+                  <div class="col-6"><input  type="checkbox" placeholder="Company name"> CE4 </div>
+                </div>
+              </div></td>
+          </tr>
+
+
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<!--<table class="table table-bordered table-striped">-->
+<!--            <tr>-->
+<!--                <td>-->
+<!--                  <button type="button" class="btn" data-toggle="collapse" data-target="#collapseExample">-->
+<!--                    Click to expand-->
+<!--                  </button>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr class="collapse" id="collapseme"><td><div>Should be collapsed</div></td></tr>-->
+<!--</table>-->
+
+    {% endblock %}
+<!--{# tutorial/templates/tutorial/people.html #}-->
+<!--{% load render_table from django_tables2 %}-->
+
+<!--    {% render_table table %}-->
+
