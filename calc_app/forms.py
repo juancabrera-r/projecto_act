@@ -1,8 +1,7 @@
-from django.core import validators
 from django import forms
 from django.forms import HiddenInput
 
-from .models import Ciclo, Modulo
+from .models import Ciclo
 
 import logging
 logger = logging.getLogger(__name__)
