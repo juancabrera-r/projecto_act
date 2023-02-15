@@ -54,7 +54,7 @@ def ciclo_new(request):
         form = CicloForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            cicloName = request.POST['cicloName']
+            cicloName = request.POST['_CicloForm__cicloName']
             info = Ciclo.objects.create(
                 descripcionCiclo=cicloName)
             return HttpResponseRedirect(reverse('index'))
@@ -74,13 +74,13 @@ def modulo_new(request):
             #Obtienes los RACE seleccionados
             datas = request.POST['id_RACE']
             #Obtiene el nombre del módulo
-            moduloName = request.POST['moduloName']
+            moduloName = request.POST['_ModuloForm__moduloName']
             #Obtiene las siglas del módulo
-            sigla = request.POST['siglasModulo']
+            sigla = request.POST['_ModuloForm__siglasModulo']
             #Obtiene el nº de RA
-            ra = request.POST['numRA']
+            ra = request.POST['_ModuloForm__numRA']
             #Obtiene el id del ciclo y lo transforma en int
-            id_Ciclo = int(request.POST['idCiclo'])
+            id_Ciclo = int(request.POST['_ModuloForm__idCiclo'])
 
             #Se genera un array de tipo [RA,CE]
             #IMPORTANTE, NO FUNCIONA CON RA >9
@@ -115,7 +115,7 @@ def act_new(request):
             #Módulo seleccionado
             modulo_select = request.POST['modulos']
             #Número de actividades que se van a crear
-            act_select = int(request.POST['numActividades'])
+            act_select = int(request.POST['_ActForm__numActividades'])
 
             #Filtra el modulo y se obtiene:
             #Número de RA del módulo seleccionado
@@ -144,22 +144,6 @@ def act_new(request):
             for n in range(1,len(race)):
                 race_len.append(len(race[n]))
 
-
-            # this = sys.modules[__name__]
-            # for x in range(0, 10):
-            #     setattr(this, 'race%s' % x, '')
-            #
-            # for n in range(1,modulo_data_numRA+1):
-            #     temp = []
-            #     for ra in modulo_data_RACE:
-            #         if ra[0]==n:
-            #             temp.append(ce[(ra[1]-1)])
-            #     race.append(temp)
-            #     setattr(this, 'race%s' % n, temp)
-
-            # long_list = [len(race1), len(race2), len(race3), len(race4), len(race5), len(race6), len(race7), len(race8), len(race9)]
-
-            # long_race = long_list.index(max(long_list))
             long_race = race_len.index(max(race_len))+1
 
             return render(request, 'result_table.html', {

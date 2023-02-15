@@ -22,7 +22,17 @@ class CicloForm(forms.Form):
 	Formulario para crear un nuevo ciclo
 	cicloName -> nombre del ciclo
 	"""
-	cicloName = forms.CharField(label="Nombre del ciclo", max_length=200)
+	__cicloName = forms.CharField(label="Nombre del ciclo", max_length=200)
+
+	@property
+	def cicloName(self):
+		print("Estoy en el getter")
+		return self.__cicloName
+
+	@cicloName.setter
+	def cicloName(self, nuevoValor):
+		print("Estoy en el setter")
+		self.__cicloName = nuevoValor
 
 class ModuloForm(forms.Form):
 	"""
@@ -34,23 +44,78 @@ class ModuloForm(forms.Form):
 		numCE -> nº de Criterios de Evaluación
 	"""
 	#Accede a la base de datos, obtiene todos los vamores y crea una lista de tuplas (id,curso)
-	moduloName = forms.CharField(label="Nombre del módulo", max_length=200)
-	siglasModulo = forms.CharField(label="Siglas del módulo", max_length=10)
-	numRA = forms.IntegerField(label="Números de RA")
-	numRACE = forms.CharField(widget=HiddenInput(), required=False)
-	idCiclo = forms.TypedChoiceField(choices=[])
+	__moduloName = forms.CharField(label="Nombre del módulo", max_length=200)
+	__siglasModulo = forms.CharField(label="Siglas del módulo", max_length=10)
+	__numRA = forms.IntegerField(label="Números de RA")
+	__numRACE = forms.CharField(widget=HiddenInput(), required=False)
+	__idCiclo = forms.TypedChoiceField(choices=[])
 
-	#Inicializa la lista desplegable
+
+	#GETTER Y SETTER de moduloName
+	@property
+	def moduloName(self):
+		print("Estoy en el getter")
+		return self.moduloName
+
+	@moduloName.setter
+	def moduloName(self, nuevoValor):
+		print("Estoy en el setter")
+		self.__moduloName = nuevoValor
+
+	# GETTER Y SETTER de siglasModulo
+	@property
+	def siglasModulo(self):
+		print("Estoy en el getter")
+		return self.siglasModulo
+
+	@moduloName.setter
+	def siglasModulo(self, nuevoValor):
+		print("Estoy en el setter")
+		self.__siglasModulo = nuevoValor
+
+	# GETTER Y SETTER de numRA
+	@property
+	def numRA(self):
+		print("Estoy en el getter")
+		return self.numRA
+
+	@numRA.setter
+	def numRA(self, nuevoValor):
+		print("Estoy en el setter")
+		self.__numRA = nuevoValor
+
+	# GETTER Y SETTER de numRACE
+	@property
+	def numRACE(self):
+		print("Estoy en el getter")
+		return self.numRACE
+
+	@numRACE.setter
+	def numRACE(self, nuevoValor):
+		print("Estoy en el setter")
+		self.__numRACE = nuevoValor
+
+	# GETTER Y SETTER de idCiclo
+	@property
+	def idCiclo(self):
+		print("Estoy en el getter")
+		return self.idCiclo
+
+	@idCiclo.setter
+	def idCiclo(self, nuevoValor):
+		print("Estoy en el setter")
+		self.__idCiclo = nuevoValor
+
+	# Inicializa la lista desplegable
 	def __init__(self, *args, **kwargs):
 		super(ModuloForm, self).__init__(*args, **kwargs)
-		self.fields['idCiclo'].choices = [(choice.id_ciclo, choice.descripcionCiclo,) for choice in Ciclo.objects.all()]
-
+		self.fields['_ModuloForm__idCiclo'].choices = [(choice.id_ciclo, choice.descripcionCiclo,) for choice in Ciclo.objects.all()]
 
 class ActForm(forms.Form):
 	"""
 
 	"""
-	numActividades = forms.IntegerField(widget=forms.TextInput(
+	__numActividades = forms.IntegerField(widget=forms.TextInput(
 		attrs={'class':'form-control'}),
 		label="",
 		error_messages={
@@ -58,3 +123,12 @@ class ActForm(forms.Form):
 			'required': "Este campo es necesario",
 		}
 	)
+	@property
+	def numActividades(self):
+		print("Estoy en el getter")
+		return self.numActividades
+
+	@numActividades.setter
+	def numActividades(self, nuevoValor):
+		print("Estoy en el setter")
+		self.__numActividades = nuevoValor
