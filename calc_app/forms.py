@@ -15,7 +15,6 @@ def clean_botcatcher(self):
 		raise forms.ValidationError("GOTCHA BOT")
 	return botcatcher
 
-#
 class CicloForm(forms.Form):
 	"""
 	Formulario para crear un nuevo ciclo
