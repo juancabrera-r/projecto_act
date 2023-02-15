@@ -1,13 +1,11 @@
 from django.urls import path
 from . import views
 
-# from .views import PersonListView
 # Template tagging
 app_name = 'calc_app'
 
 urlpatterns = [
     #Accede a la funcion relative en views
-    # path('relative/', views.relative, name='relative'),
     path('modulo/', views.modulo_view, name='modulo'),
     path('ciclo/', views.ciclo_view, name='ciclo'),
     path('actividad/', views.act_view, name='actividad'),
