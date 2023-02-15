@@ -24,8 +24,15 @@
     <a href="{% url 'calc_app:modulo' %}">Modulo</a>
     <a href="{% url 'calc_app:ciclo' %}">Ciclo</a>
     <a href="{% url 'calc_app:actividad' %}">Actividad</a>
-    <a href="{% url 'calc_app:register' %}">Register</a>
     <a href="{% url 'admin:index' %}">Admin</a>
+
+    {% if user.is_authenticated %}
+        <a class="navbar-link" href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a class="navbar-link" href="{% url 'calc_app:user_login' %}">Login</a>
+        <a href="{% url 'calc_app:register' %}">Register</a>
+    {% endif %}
+
 
 
     <div class="container">

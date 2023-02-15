@@ -157,3 +157,6 @@ PASSWORD_HASERS = [
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
     'django.contrib.auth.hashers.ScryptPasswordHasher',
 ]
+
+#Login
+LOGIN_URL = 'calc_app/user_login'

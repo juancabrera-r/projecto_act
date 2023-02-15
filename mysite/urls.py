@@ -24,8 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('calc_app/', include('calc_app.urls')),
-    # path('logout/', views.user_logout, name='logout'),
-    # path('special/', views.special, name='special'),
+    path('logout/', views.user_logout, name='logout'),
+    path('special/', views.special, name='special'),
 ]
 
  # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
