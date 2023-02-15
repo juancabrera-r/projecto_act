@@ -1,7 +1,8 @@
 from django import forms
 from django.forms import HiddenInput
+from django.contrib.auth.models import User
+from .models import Ciclo, UserProfileInfo
 
-from .models import Ciclo
 
 import logging
 logger = logging.getLogger(__name__)
@@ -15,6 +16,23 @@ def clean_botcatcher(self):
 		raise forms.ValidationError("GOTCHA BOT")
 	return botcatcher
 
+
+#Formulario Usuario
+class UserForm(forms.ModelForm):
+	password = forms.CharField(widget=forms.PasswordInput())
+
+	class Meta():
+		model = User
+		fields = ('username', 'email', 'password')
+
+
+# Formulario que hereda del modelo propio creado
+# class UserProfileInfoForm(forms.ModelForm):
+# 	class Meta():
+# 		model = UserProfileInfo
+
+
+#Formulario Ciclo
 class CicloForm(forms.Form):
 	"""
 	Formulario para crear un nuevo ciclo
@@ -32,6 +50,8 @@ class CicloForm(forms.Form):
 		print("Estoy en el setter")
 		self.__cicloName = nuevoValor
 
+
+#Formulario Modulo
 class ModuloForm(forms.Form):
 	"""
 	Formulario para crear un nuevo módulo
@@ -109,6 +129,8 @@ class ModuloForm(forms.Form):
 		super(ModuloForm, self).__init__(*args, **kwargs)
 		self.fields['_ModuloForm__idCiclo'].choices = [(choice.id_ciclo, choice.descripcionCiclo,) for choice in Ciclo.objects.all()]
 
+
+#Formulario Actividad
 class ActForm(forms.Form):
 	"""
 

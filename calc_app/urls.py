@@ -13,4 +13,6 @@ urlpatterns = [
     path('modulo_new/', views.modulo_new, name='modulo_new'),
     path("act_new/", views.act_new, name='act_new'),
     path("result_view/", views.result_view, name='result'),
+    path('register/', views.register, name='register'),
+
 ]
