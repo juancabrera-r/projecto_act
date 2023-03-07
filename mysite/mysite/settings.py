@@ -160,3 +160,6 @@ PASSWORD_HASERS = [
 
 #Login
 LOGIN_URL = 'calc_app/user_login'
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'

@@ -1,10 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
+
+# class Create(models.Model):
+#
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     class Meta:
+#         permissions = (
+#                        ("create_ciclo", "can create a new ciclo"),
+#                        ("create_modulo", "can create a new modulo"),
+#                       )
 
 #Modelo Usuario
 class UserProfileInfo(models.Model):
-
     user = models.OneToOneField(User,on_delete=models.CASCADE)
 
 #Modelo del Ciclo
@@ -55,3 +62,16 @@ class Actividades(models.Model):
 
     def __str__(self):
         return str(self.modulo)
+
+#Modelo de definiciones de RA y CE
+class RACE_definiciones(models.Model):
+    """
+
+    """
+    ciclo = models.ForeignKey(Ciclo, on_delete=models.CASCADE)
+    modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE)
+    def_RA = models.CharField(max_length=1000, unique=True)
+    def_CE = models.CharField(max_length=1000, unique=True)
+
+    def __str__(self):
+        pass

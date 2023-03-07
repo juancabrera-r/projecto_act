@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body_block %}
+
+<!--Formulario de LONGIN-->
+<!--Y redirecciona al formulario password_reset -->
+<div class="jumbotron">
+    <h1>Log in!</h1>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <label for="username">Nombre de usuario: </label>
+        <input type="text" id="username" name="username" placeholder="Enter Username">
+
+        <label for="password">Contraseña: </label>
+        <input type="password" id="password" name="password">
+
+        <input type="submit" name="" value="Login">
+    </form>
+<!--    {# Assumes you setup the password_reset view in your URLconf #}-->
+    <p><a href="{% url 'password_reset' %}">Recuperar contraseña.</a></p>
+</div>
+
+{% endblock %}

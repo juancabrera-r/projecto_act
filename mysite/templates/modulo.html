@@ -1,5 +1,6 @@
 {% extends "base.html" %}
     {% block body_block %}
+    {% if perms.calc_app.add_modulo %}
 
     <h1>CREAR CURSO</h1>
 <!--    Formulario creado en forms.py que crea un nuevo módulo-->
@@ -15,11 +16,9 @@
         <input type="button" value="Genera una tabla" onclick="crear()">
     </form>
 
-
-<!--        <input type="submit" name="" value="Continuar">-->
-<!--        <input type="button" id="enviar" value="crear tabla" onclick="crear()"/>- -->
-<!--        <input type="button" value="Limpiar" onclick="limpiar()"/>-->
-<!--        <input type="button" value="Datos" onclick="obtener()"/>-->
+    {% else %}
+        <h2>No tiene permiso para crear un modulo nuevo.</h2>
+    {% endif %}
 
 
     <script>

@@ -2,15 +2,16 @@
     {% block body_block %}
 
     <h1>CREAR CICLO</h1>
-
-    {% if perms.
+        {% if perms.calc_app.add_modulo %}
     <!--    Formulario creado en forms.py que crea un nuevo módulo-->
-            <form action="{% url 'calc_app:ciclo_new' %}" method="post">
+        <form action="{% url 'calc_app:ciclo_new' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
 
             <input type="submit" name="" value="Continuar">
         </form>
-
+    {% else %}
+        <h2>No tiene permiso para crear un ciclo nuevo.</h2>
+    {% endif %}
 
     {% endblock %}

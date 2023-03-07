@@ -5,7 +5,7 @@ from django.urls import reverse
 from .forms import ModuloForm, CicloForm, ActForm, UserForm
 from .models import Ciclo, Modulo
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 #Para mostrar por consola
 import logging
@@ -81,7 +81,7 @@ def register(request):
     else:
         user_form = UserForm()
 
-    return render(request, 'registration.html', {
+    return render(request, 'registration/registration.html', {
         'user_form': user_form,
         'registered': registered})
 
@@ -171,7 +171,7 @@ def modulo_new(request):
     return render(request, 'index.html', {'form': form})
 
 
-#Creaciónde un nuevo CICLO
+#Creación de un nuevo CICLO
 def act_new(request):
     if request.method == 'POST':
 
