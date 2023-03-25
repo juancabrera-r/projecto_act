@@ -2,7 +2,7 @@
     {% block body_block %}
     {% if perms.calc_app.add_modulo %}
 
-    <h1>CREAR CURSO</h1>
+    <h1>CREAR MÓDULO</h1>
 <!--    Formulario creado en forms.py que crea un nuevo módulo-->
         <form action="{% url 'calc_app:modulo_new' %}" method="post">
             {% csrf_token %}

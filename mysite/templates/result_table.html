@@ -4,16 +4,17 @@
 
 {% for act in act_select %}
 <table class="table table-striped table-fixed">
-  <thead data-toggle="collapse" href="#collapseA{{act}}" aria-expanded="false" aria-controls="collapseA{{act}}">
+  <thead >
     <tr>
 
-        <th scope="row">Actividad {{act}}</th>
+        <th data-toggle="collapse" href="#collapseA{{act}}" aria-expanded="false" aria-controls="collapseA{{act}}" class="th-lg" scope="row" role="button">Actividad {{act}}</th>
         {% for i in numRA %}
-            <th class="th-lg" style="text-align: center">RA{{i}}</th>
-
+            <th style="text-align: center" data-toggle="collapse" data-target="#multiCollapseExample{{i}}" role="button"
+            aria-expanded="false" >RA{{i}}</th>
         {% endfor %}
     </tr>
   </thead>
+
   <tbody class="collapse" id="collapseA{{act}}">
     {% for len in major %}
         {% for ce in len %}
@@ -21,12 +22,20 @@
           <th scope="row">{{act}}</th>
                 {% if ce in race1 or race2 or race3 or race4 or race5 or race6 or race7 or race8 or race9 or race10 %}
                     {% if ce in race1 %}
-                        <td style="text-align: right"><div class="col-6"><input id="ACT{{act}}.RA1.CE{{ce}}" type="checkbox" placeholder="Company name"> CE{{ce}} </div></td>
+                        <td style="text-align: right" data-toggle="collapse" data-target="#multiCollapseExample{{act}}" role="button">
+                            <div class="col-6">
+                            <input id="ACT{{act}}.RA1.CE{{ce}}" type="checkbox" placeholder="Company name"> CE{{ce}}
+                            </div>
+                        </td>
                     {% else %}
                         <th></th>
                     {% endif %}
                     {% if ce in race2 %}
-                        <td style="text-align: right"><div class="col-6"><input id="ACT{{act}}.RA2.CE{{ce}}" type="checkbox" placeholder="Company name"> CE{{ce}} </div></td>
+                        <td style="text-align: right" data-toggle="collapse" data-target="#multiCollapseExample{{act}}" role="button">
+                            <div class="col-6">
+                            <input id="ACT{{act}}.RA2.CE{{ce}}" type="checkbox" placeholder="Company name"> CE{{ce}}
+                            </div>
+                        </td>
                     {% else %}
                         <th></th>
                     {% endif %}
@@ -71,15 +80,33 @@
                         <th></th>
                     {% endif %}
 
+
                 {% else %}
 
                 {% endif %}
+
         </tr>
         {% endfor %}
   {% endfor %}
 
   </tbody>
 </table>
+
+<!--<div class="col">-->
+<!--<div class="collapse multi-collapse" id="multiCollapseExample1">-->
+<!--  <div class="card card-body">-->
+<!--    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.-->
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col">-->
+<!--<div class="collapse multi-collapse" id="multiCollapseExample2">-->
+<!--  <div class="card card-body">-->
+<!--    reprehenderit pariatur cliche , enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.-->
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
 {% endfor %}
+
 
     {% endblock %}
