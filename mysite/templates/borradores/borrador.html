@@ -154,3 +154,22 @@
 
 <!--    {% render_table table %}-->
 
+var col = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o'];
+        var filas = document.getElementById("id__ModuloForm__numRA").value;
+        var ce_checked = [];
+        var ID = [];
+            $("*").each(function() {
+                if (this.id) {
+                    ID.push(this.id);
+                }
+            });
+        for(i=1;i<=filas;i++){
+            for(j=1;j<=col.length;j++){
+                var temp = ([i]+[j]);
+                if(document.getElementById(temp).checked){
+                    ce_checked.push([temp]);
+                }
+            }
+        }
+        console.log(ce_checked)
+        document.getElementById("result").value = ce_checked;
